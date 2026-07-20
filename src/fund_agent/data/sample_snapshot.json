@@ -1,0 +1,133 @@
+{
+  "meta": {
+    "snapshot_time": "2026-07-10T19:00:00+08:00",
+    "sources": [
+      {"name": "offline-market-sample", "as_of": "2026-07-10"},
+      {"name": "offline-fund-disclosure-sample", "as_of": "2026-06-30"},
+      {"name": "offline-news-sample", "as_of": "2026-07-10"}
+    ]
+  },
+  "market": {
+    "as_of": "2026-07-10 15:00:00+08:00",
+    "index_change": 0.65,
+    "turnover_billion": 1325.4,
+    "advancers": 3260,
+    "decliners": 1820,
+    "regime": "震荡偏强"
+  },
+  "fund": {
+    "code": "510300",
+    "name": "沪深300ETF示例",
+    "category": "宽基指数ETF",
+    "manager": "示例基金经理",
+    "manager_tenure_years": 4.2,
+    "tracking_error": 0.012,
+    "share_change_1d": 0.008,
+    "share_change_20d": 0.034,
+    "official_nav_published": false
+  },
+  "nav": [
+    {"date": "2026-06-12", "value": 4.010},
+    {"date": "2026-06-15", "value": 4.028},
+    {"date": "2026-06-16", "value": 4.015},
+    {"date": "2026-06-17", "value": 4.044},
+    {"date": "2026-06-18", "value": 4.060},
+    {"date": "2026-06-19", "value": 4.052},
+    {"date": "2026-06-22", "value": 4.081},
+    {"date": "2026-06-23", "value": 4.096},
+    {"date": "2026-06-24", "value": 4.072},
+    {"date": "2026-06-25", "value": 4.101},
+    {"date": "2026-06-26", "value": 4.115},
+    {"date": "2026-06-29", "value": 4.088},
+    {"date": "2026-06-30", "value": 4.126},
+    {"date": "2026-07-01", "value": 4.149},
+    {"date": "2026-07-02", "value": 4.132},
+    {"date": "2026-07-03", "value": 4.168},
+    {"date": "2026-07-06", "value": 4.190},
+    {"date": "2026-07-07", "value": 4.154},
+    {"date": "2026-07-08", "value": 4.178},
+    {"date": "2026-07-09", "value": 4.205}
+  ],
+  "benchmark": [
+    {"date": "2026-06-12", "value": 4000.0},
+    {"date": "2026-06-15", "value": 4016.0},
+    {"date": "2026-06-16", "value": 4002.0},
+    {"date": "2026-06-17", "value": 4030.0},
+    {"date": "2026-06-18", "value": 4048.0},
+    {"date": "2026-06-19", "value": 4039.0},
+    {"date": "2026-06-22", "value": 4068.0},
+    {"date": "2026-06-23", "value": 4084.0},
+    {"date": "2026-06-24", "value": 4058.0},
+    {"date": "2026-06-25", "value": 4088.0},
+    {"date": "2026-06-26", "value": 4102.0},
+    {"date": "2026-06-29", "value": 4075.0},
+    {"date": "2026-06-30", "value": 4114.0},
+    {"date": "2026-07-01", "value": 4138.0},
+    {"date": "2026-07-02", "value": 4121.0},
+    {"date": "2026-07-03", "value": 4157.0},
+    {"date": "2026-07-06", "value": 4178.0},
+    {"date": "2026-07-07", "value": 4142.0},
+    {"date": "2026-07-08", "value": 4166.0},
+    {"date": "2026-07-09", "value": 4192.0}
+  ],
+  "momentum": {
+    "return_20d": 0.0486,
+    "return_60d": 0.071
+  },
+  "valuation": {
+    "as_of": "2026-07-09",
+    "pe_ttm": 12.84,
+    "pb": 1.36,
+    "pe_percentile_5y": 32.0,
+    "pb_percentile_5y": 38.0,
+    "method": "跟踪指数滚动市盈率/市净率示例"
+  },
+  "holdings": {
+    "previous_period": "2026-03-31",
+    "current_period": "2026-06-30",
+    "previous": [
+      {"code": "600519", "name": "贵州茅台", "weight": 5.60},
+      {"code": "300750", "name": "宁德时代", "weight": 3.20},
+      {"code": "601318", "name": "中国平安", "weight": 2.90},
+      {"code": "600036", "name": "招商银行", "weight": 2.60},
+      {"code": "000858", "name": "五粮液", "weight": 1.70}
+    ],
+    "current": [
+      {"code": "600519", "name": "贵州茅台", "weight": 5.10},
+      {"code": "300750", "name": "宁德时代", "weight": 3.75},
+      {"code": "601318", "name": "中国平安", "weight": 3.05},
+      {"code": "600036", "name": "招商银行", "weight": 2.95},
+      {"code": "000333", "name": "美的集团", "weight": 1.85}
+    ]
+  },
+  "news": [
+    {
+      "title": "宁德时代发布经营更新公告",
+      "summary": "宁德时代披露最新经营数据，可能影响新能源权重股表现。",
+      "source": "示例交易所公告",
+      "url": "https://example.invalid/disclosure/1",
+      "published_at": "2026-07-10T17:20:00+08:00",
+      "importance": 1,
+      "market_wide": false
+    },
+    {
+      "title": "A股成交额较前一交易日放大",
+      "summary": "市场成交活跃度提升，主要宽基指数收涨。",
+      "source": "示例市场数据",
+      "url": "https://example.invalid/market/1",
+      "published_at": "2026-07-10T15:30:00+08:00",
+      "importance": 2,
+      "market_wide": true
+    },
+    {
+      "title": "与基金无关的营销信息",
+      "summary": "低相关内容。",
+      "source": "示例来源",
+      "url": "https://example.invalid/noise/1",
+      "published_at": "2026-07-10T12:00:00+08:00",
+      "importance": 3,
+      "market_wide": false
+    }
+  ]
+}
+

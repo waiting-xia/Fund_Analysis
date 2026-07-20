@@ -1,0 +1,46 @@
+{
+  "name": "guanlan-fund-ai",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "dev:frontend": "vite",
+    "dev:server": "node --watch server/index.mjs",
+    "build": "vite build",
+    "start": "node server/index.mjs",
+    "mcp:eastmoney": "conda run --no-capture-output -n Python_310 python mcp/eastmoney_server.py",
+    "mcp:ifind": "conda run --no-capture-output -n Python_310 python mcp/ifind_server.py",
+    "mcp:alipay": "conda run --no-capture-output -n Python_310 python mcp/alipay_fund_server.py",
+    "mcp:rag": "conda run --no-capture-output -n Python_310 python mcp/rag_server.py",
+    "rag:build": "conda run --no-capture-output -n Python_310 python mcp/rag_admin.py build",
+    "rag:status": "conda run --no-capture-output -n Python_310 python mcp/rag_admin.py status",
+    "mcp:check": "node scripts/test-mcp.mjs",
+    "test:mcp-live": "node scripts/test-mcp-live.mjs",
+    "typecheck": "tsc -p tsconfig.json",
+    "lint": "eslint src server scripts vite.config.ts",
+    "test": "npm run build && node --test tests/*.test.mjs",
+    "test:live": "node scripts/test-live.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.26.0",
+    "react": "19.2.6",
+    "react-dom": "19.2.6"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.39.4",
+    "@types/node": "22.19.19",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "@vitejs/plugin-react": "6.0.2",
+    "eslint": "9.39.4",
+    "eslint-plugin-react-hooks": "7.1.1",
+    "globals": "14.0.0",
+    "typescript": "5.9.3",
+    "typescript-eslint": "8.59.3",
+    "vite": "8.0.13"
+  }
+}

@@ -1,0 +1,12 @@
+/node_modules/
+/.corepack/
+/dist/
+/coverage/
+.env
+.env.*
+*.tsbuildinfo
+npm-debug.log*
+.DS_Store
+__pycache__/
+*.py[cod]
+*.sqlite3

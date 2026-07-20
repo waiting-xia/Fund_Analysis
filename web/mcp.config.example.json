@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "eastmoney": {
+      "command": "python",
+      "args": ["mcp/eastmoney_server.py"]
+    },
+    "ifind": {
+      "command": "python",
+      "args": ["mcp/ifind_server.py"]
+    },
+    "alipay": {
+      "command": "python",
+      "args": ["mcp/alipay_fund_server.py"]
+    }
+  }
+}

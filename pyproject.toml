@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "fund-research-agent"
+version = "0.1.0"
+description = "A LangGraph-based research agent for Chinese public funds"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "langgraph>=1.0,<2.0",
+  "pydantic>=2.7,<3.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+live-data = ["akshare>=1.18"]
+
+[project.scripts]
+fund-agent = "fund_agent.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/fund_agent"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
