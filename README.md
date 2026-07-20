@@ -2,12 +2,12 @@
 
 面向中国公募基金的研究辅助智能体。首期聚焦“有来源、可复算、可解释”的基金分析，不执行交易，也不输出无依据的买卖指令。
 
-```
+
 <img width="1906" height="823" alt="image" src="https://github.com/user-attachments/assets/e098e8d3-0b12-4506-9761-2954549efde9" />
 <img width="1848" height="716" alt="image" src="https://github.com/user-attachments/assets/3d48aad9-2cac-4f24-adba-3223fd79638e" />
 
 
-```
+
 
 ##  能力
 
