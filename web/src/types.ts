@@ -163,6 +163,36 @@ export interface AIAnalysisResponse {
   };
 }
 
+export interface InvestorMemory {
+  version: 1;
+  riskPreference: "保守" | "稳健" | "进取";
+  investmentHorizon: "短线" | "波段" | "中长期";
+  executionPreference: "分批交易" | "定投为主" | "一次性交易";
+  frequentSectors: Array<{
+    name: string;
+    count: number;
+  }>;
+}
+
+export type AIChatRole = "user" | "assistant";
+
+export interface AIChatMessage {
+  role: AIChatRole;
+  content: string;
+}
+
+export interface AIChatResponse {
+  chatContractVersion: 1;
+  reply: string;
+  model: string;
+  code: string;
+  recentInformationCount?: number;
+  recentInformationAsOf?: string | null;
+  knowledgeCount?: number;
+  knowledgeSources?: string[];
+  createdAt: string;
+}
+
 export interface RealtimeQuote {
   name: string;
   code: string;

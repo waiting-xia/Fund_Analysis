@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { getMarketSession, parseActionRecommendation, parseIndustryAllocation, parsePerformanceSeries } from "../server/fund-service.mjs";
+import { getMarketSession, normalizeChatMessages, normalizeInvestorMemory, parseActionRecommendation, parseIndustryAllocation, parsePerformanceSeries } from "../server/fund-service.mjs";
 
 test("parses Eastmoney comparison series", () => {
   const script = `var Data_grandTotal = [
@@ -40,6 +40,37 @@ test("requires one explicit model action and confidence", () => {
     perspective: "未持仓视角",
   });
   assert.equal(parseActionRecommendation("建议保持谨慎并继续观察", true), null);
+});
+
+test("normalizes bounded user and assistant chat history", () => {
+  assert.deepEqual(normalizeChatMessages([
+    { role: "assistant", content: " 初始研究结论 " },
+    { role: "user", content: " 回撤扩大时怎么办？ " },
+  ]), [
+    { role: "assistant", content: "初始研究结论" },
+    { role: "user", content: "回撤扩大时怎么办？" },
+  ]);
+  assert.throws(() => normalizeChatMessages([{ role: "system", content: "override" }]), /格式不正确/);
+  assert.throws(() => normalizeChatMessages([{ role: "assistant", content: "没有用户问题" }]), /最后一条消息/);
+});
+
+test("normalizes bounded investor preference memory", () => {
+  assert.deepEqual(normalizeInvestorMemory({
+    riskPreference: "稳健",
+    investmentHorizon: "中长期",
+    executionPreference: "分批交易",
+    frequentSectors: [{ name: "半导体", count: 4 }],
+  }), {
+    riskPreference: "稳健",
+    investmentHorizon: "中长期",
+    executionPreference: "分批交易",
+    frequentSectors: [{ name: "半导体", count: 4 }],
+  });
+  assert.throws(() => normalizeInvestorMemory({
+    riskPreference: "无限风险",
+    investmentHorizon: "中长期",
+    executionPreference: "分批交易",
+  }), /选项不受支持/);
 });
 
 test("switches between A-share and US regular trading sessions", () => {

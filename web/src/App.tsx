@@ -220,7 +220,7 @@ export default function App() {
             <div className="sectionTitle"><span className="sectionIcon"><Icon name="sparkles"/></span><div><span className="eyebrow">RESEARCH SYNTHESIS</span><h2>AI 研究综合判断</h2><p>将公开数据、风险指标与金融理论组织为可核验的研究结论。</p></div></div>
             <div className="aiSectionRule"><Icon name="shield"/><span><b>证据约束输出</b><small>事实 / 理论 / 推断分层</small></span></div>
           </header>
-          {fund ? <AIAnalysis key={fund.code} code={fund.code} isHeld={selectedInWatchlist}/> : <div className="wideLoading"><i/>等待基金数据…</div>}
+          {fund ? <AIAnalysis key={fund.code} code={fund.code} isHeld={selectedInWatchlist} sectors={(portfolio?.industries || []).map((item) => item.name)}/> : <div className="wideLoading"><i/>等待基金数据…</div>}
         </section>
 
         <section className="sourceFooter"><div><Icon name="database"/><span><b>数据与模型边界</b><small>公开基金与市场数据 · 兼容模型服务</small></span></div><p>净值以基金公司正式披露为准；估算净值、量化信号与模型分析均不构成买卖建议。</p><a href={fund?.sources.profile} target="_blank" rel="noreferrer">查看原始基金档案<Icon name="arrowUpRight"/></a></section>

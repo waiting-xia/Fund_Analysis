@@ -1,4 +1,4 @@
-import type { AIAnalysisResponse, AlipayFundChannel, FundData, FundPortfolioResponse, FundRealtime, FundSearchResponse, McpStatusResponse, NewsWorkspaceResponse, RealtimeMarketResponse, ReportsResponse, RiskWorkspaceResponse, SecurityQuotesResponse, ValuationResponse, WatchlistResponse } from "./types";
+import type { AIAnalysisResponse, AIChatMessage, AIChatResponse, AlipayFundChannel, FundData, FundPortfolioResponse, FundRealtime, FundSearchResponse, InvestorMemory, McpStatusResponse, NewsWorkspaceResponse, RealtimeMarketResponse, ReportsResponse, RiskWorkspaceResponse, SecurityQuotesResponse, ValuationResponse, WatchlistResponse } from "./types";
 
 async function readJson<T>(response: Response): Promise<T> {
   const payload = await response.json() as T & { error?: string };
@@ -31,16 +31,30 @@ export async function fetchAlipayFund(code: string, signal?: AbortSignal): Promi
   return readJson<AlipayFundChannel>(response);
 }
 
-export async function fetchAIAnalysis(code: string, isHeld: boolean, signal?: AbortSignal): Promise<AIAnalysisResponse> {
+export async function fetchAIAnalysis(code: string, isHeld: boolean, memory: InvestorMemory, signal?: AbortSignal): Promise<AIAnalysisResponse> {
   const response = await fetch("/api/analyze", {
     method: "POST",
     headers: { "content-type": "application/json" },
-    body: JSON.stringify({ code, isHeld }),
+    body: JSON.stringify({ code, isHeld, memory }),
     signal,
   });
   const result = await readJson<AIAnalysisResponse>(response);
   if (result.analysisContractVersion !== 2 || !result.actionRecommendation?.action) {
     throw new Error("分析服务仍在运行旧版本，请停止当前进程后重新执行 npm.cmd run dev");
+  }
+  return result;
+}
+
+export async function fetchAIChat(code: string, isHeld: boolean, messages: AIChatMessage[], memory: InvestorMemory, signal?: AbortSignal): Promise<AIChatResponse> {
+  const response = await fetch("/api/chat", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ code, isHeld, messages, memory }),
+    signal,
+  });
+  const result = await readJson<AIChatResponse>(response);
+  if (result.chatContractVersion !== 1 || !result.reply) {
+    throw new Error("对话服务返回格式不正确，请重新启动服务后再试");
   }
   return result;
 }
